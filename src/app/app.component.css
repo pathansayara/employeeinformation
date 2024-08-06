@@ -1,0 +1,23 @@
+.clientA .header {
+  background-color: blue !important;
+  color: white !important;
+}
+.clientA {
+  background-color: white !important;
+}
+
+.clientB .header {
+  background-color: green !important;
+  color: white !important;
+}
+.clientB {
+  background-color: lightgray !important;
+}
+
+.clientC .header {
+  background-color: red !important;
+  color: white !important;
+}
+.clientC {
+  background-color: beige !important;
+}

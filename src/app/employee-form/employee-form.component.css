@@ -1,0 +1,13 @@
+form label{
+    font-weight: 700;
+}
+
+form .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: inherit;
+  }
+  
+  table th{
+    background-color: rgb(202 199 199 / 22%);
+  }

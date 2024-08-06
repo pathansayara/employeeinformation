@@ -1,0 +1,116 @@
+
+<!-- Employee form -->
+
+<h3 class="text-center py-3 ">Employee Form</h3>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm" class="container mt-4">
+                <div class="form-group mb-3">
+                  <label for="firstName">First Name:</label>
+                  <input type="text" id="firstName" name="firstName" ngModel required class="form-control" #firstName="ngModel">
+                  <div *ngIf="firstName.invalid && firstName.touched" class="text-danger">
+                    First Name is required.
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" id="lastName" name="lastName" ngModel required class="form-control" #lastName="ngModel">
+                  <div *ngIf="lastName.invalid && lastName.touched" class="text-danger">
+                    Last Name is required.
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" ngModel required email class="form-control" #email="ngModel">
+                  <div *ngIf="email.invalid && email.touched" class="text-danger">
+                    <div *ngIf="email.errors?.['required']">Email is required.</div>
+                    <div *ngIf="email.errors?.['email']">Invalid email format.</div>
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="phoneNumber">Phone Number:</label>
+                  <input type="text" id="phoneNumber" name="phoneNumber" ngModel required pattern="[0-9]{10}" class="form-control" #phoneNumber="ngModel">
+                  <div *ngIf="phoneNumber.invalid && phoneNumber.touched" class="text-danger">
+                    <div *ngIf="phoneNumber.errors?.['required']">Phone Number is required.</div>
+                    <div *ngIf="phoneNumber.errors?.['pattern']">Invalid phone number format. Must be 10 digits.</div>
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="address">Address:</label>
+                  <textarea id="address" name="address" ngModel required class="form-control" #address="ngModel"></textarea>
+                  <div *ngIf="address.invalid && address.touched" class="text-danger">
+                    Address is required.
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="position">Position:</label>
+                  <select id="position" name="position" ngModel required class="form-control" #position="ngModel">
+                    <option value="" disabled selected>Select your position</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Developer">Developer</option>
+                    <option value="Designer">Designer</option>
+                    <option value="HR">HR</option>
+                  </select>
+                  <div *ngIf="position.invalid && position.touched" class="text-danger">
+                    Position is required.
+                  </div>
+                </div>
+              
+                <div class="form-group mb-3">
+                  <label for="dateOfJoining">Date of Joining:</label>
+                  <input type="date" id="dateOfJoining" name="dateOfJoining" ngModel required class="form-control" #dateOfJoining="ngModel">
+                  <div *ngIf="dateOfJoining.invalid && dateOfJoining.touched" class="text-danger">
+                    Date of Joining is required.
+                  </div>
+                </div>
+
+                <div class="buttn-group text-center py-3">
+                <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary mr-2 mx-2">Submit</button>
+    
+               </div>
+              </form>
+        </div>
+    </div>
+</div>
+  
+
+
+<!-- Display submitted form data -->
+
+  <div *ngIf="submittedData.length > 0" class="mt-4">
+    <h3 class="py-3"> Employee Data:</h3>
+    <table class="table   table-bordered">
+      <thead >
+        <tr>
+          <th>Client</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Address</th>
+          <th>Position</th>
+          <th>Date of Joining</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of submittedData">
+            <td>{{ data.client }}</td>
+          <td>{{ data.firstName }}</td>
+          <td>{{ data.lastName }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.phoneNumber }}</td>
+          <td>{{ data.address }}</td>
+          <td>{{ data.position }}</td>
+          <td>{{ data.dateOfJoining }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
